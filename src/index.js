@@ -1,7 +1,7 @@
 import http from 'http';
 
 import logger from './utils/logger.js';
-import { API_PORT, APOLLO_PORT } from './config.js';
+import { API_PORT } from './config.js';
 import {
   createApolloServer,
   AuthService,
