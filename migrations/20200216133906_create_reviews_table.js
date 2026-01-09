@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+export function up(knex) {
   return knex.schema.createTable('reviews', table => {
     table.text('id').primary();
     table
@@ -16,8 +16,8 @@ exports.up = function(knex) {
 
     table.index(['user_id', 'repository_id']);
   });
-};
+}
 
-exports.down = function(knex) {
+export function down(knex) {
   return knex.schema.dropTableIfExists('reviews');
-};
+}

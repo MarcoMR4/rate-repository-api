@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+export function up(knex) {
   return knex.schema.createTable('users', table => {
     table.text('id').primary();
     table.text('username').unique();
@@ -8,8 +8,8 @@ exports.up = function(knex) {
 
     table.index('username');
   });
-};
+}
 
-exports.down = function(knex) {
+export function down(knex) {
   return knex.schema.dropTableIfExists('users');
-};
+}
