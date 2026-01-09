@@ -2,7 +2,12 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { knexSnakeCaseMappers } from 'objection';
 
-import knexfile from '../knexfile';
+import knexfile from '../knexfile.js';
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 

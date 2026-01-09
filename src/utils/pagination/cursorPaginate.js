@@ -1,10 +1,10 @@
-import { isNumber } from 'lodash';
+import { isNumber } from 'lodash-es';
 
-import normalizeOrderBy from './normalizeOrderBy';
-import reverseOrderBy from './reverseOrderBy';
-import serializeCursor from './serializeCursor';
-import parseCursor from './parseCursor';
-import cursorWhere from './cursorWhere';
+import normalizeOrderBy from './normalizeOrderBy.js';
+import reverseOrderBy from './reverseOrderBy.js';
+import serializeCursor from './serializeCursor.js';
+import parseCursor from './parseCursor.js';
+import cursorWhere from './cursorWhere.js';
 
 const getValidLimitOrFail = ({ first, last }) => {
   const limit = isNumber(first) ? first : isNumber(last) ? last : 30;

@@ -1,8 +1,8 @@
-import { AuthenticationError } from 'apollo-server';
+import { GraphQLError } from 'graphql';
 
-import { ACCESS_TOKEN_EXPIRATION_TIME } from '../config';
-import signJwt from './signJwt';
-import verifyJwt from './verifyJwt';
+import { ACCESS_TOKEN_EXPIRATION_TIME } from '../config.js';
+import signJwt from './signJwt.js';
+import verifyJwt from './verifyJwt.js';
 
 const subject = 'accessToken';
 
@@ -39,13 +39,17 @@ class AuthService {
   }
 
   async getUserOrFail(error) {
-    const normalizedError =
-      error || new AuthenticationError('Authorization is required');
-
     const user = await this.getUser();
 
     if (!user) {
-      throw normalizedError;
+      if (error) {
+        throw error;
+      }
+      throw new GraphQLError('Authorization is required', {
+        extensions: {
+          code: 'UNAUTHENTICATED',
+        },
+      });
     }
 
     return user;

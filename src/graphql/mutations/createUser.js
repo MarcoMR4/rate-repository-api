@@ -1,9 +1,10 @@
-import { gql, ApolloError } from 'apollo-server';
+import { gql } from 'graphql-tag';
+import { GraphQLError } from 'graphql';
 import * as yup from 'yup';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcrypt';
 
-import User from '../../models/User';
+import User from '../../models/User.js';
 
 export const typeDefs = gql`
   input CreateUserInput {
@@ -19,9 +20,14 @@ export const typeDefs = gql`
   }
 `;
 
-class UsernameTakenError extends ApolloError {
+class UsernameTakenError extends GraphQLError {
   constructor(message, properties) {
-    super(message, 'USERNAME_TAKEN', properties);
+    super(message, {
+      extensions: {
+        code: 'USERNAME_TAKEN',
+        ...properties,
+      },
+    });
   }
 
   static fromUsername(username) {

@@ -1,4 +1,4 @@
-import { isArray, isString, isObject } from 'lodash';
+import { isArray, isString, isObject } from 'lodash-es';
 
 const normalizeOrderByItem = item => {
   if (isString(item)) {

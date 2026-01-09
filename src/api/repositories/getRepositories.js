@@ -1,7 +1,7 @@
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 
-import githubClient from '../../utils/githubClient';
-import Repository from '../../models/Repository';
+import githubClient from '../../utils/githubClient.js';
+import Repository from '../../models/Repository.js';
 
 const getRepositoryPayload = (
   repository,

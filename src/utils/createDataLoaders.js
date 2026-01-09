@@ -1,9 +1,9 @@
 import DataLoader from 'dataloader';
-import { camelCase, isArray, find, zipObject } from 'lodash';
+import { camelCase, isArray, find, zipObject } from 'lodash-es';
 
-import Repository from '../models/Repository';
-import Review from '../models/Review';
-import User from '../models/User';
+import Repository from '../models/Repository.js';
+import Review from '../models/Review.js';
+import User from '../models/User.js';
 
 const jsonCacheKeyFn = value => JSON.stringify(value);
 
