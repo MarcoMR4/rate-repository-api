@@ -9,6 +9,8 @@ import {
 } from './apolloServer.js';
 import app from './app.js';
 
+import { NotFoundError } from './errors.js';
+
 const startServer = async () => {
   const httpServer = http.createServer(app);
 
@@ -34,6 +36,10 @@ const startServer = async () => {
       },
     }),
   );
+
+  app.use((ctx) => {
+    throw new NotFoundError(`The path "${ctx.request.path}" is not found`);
+  });
 
   httpServer.on('request', app.callback());
 

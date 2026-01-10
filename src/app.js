@@ -50,8 +50,4 @@ apiRouter.use('/api', api.routes());
 
 app.use(apiRouter.routes());
 
-app.use((ctx) => {
-  throw new NotFoundError(`The path "${ctx.request.path}" is not found`);
-});
-
 export default app;
